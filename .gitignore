@@ -1,0 +1,8 @@
+# IDE files
+.idea
+*.iml
+# pyinstaller artefacts
+build
+dist
+__pycache__
+*.spec

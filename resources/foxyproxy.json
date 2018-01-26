@@ -1,0 +1,242 @@
+{
+  "mode": "patterns",
+  "proxySettings": [    
+    {
+      "title": "KiteProxy",
+      "type": 1,
+      "color": "#66cc66",
+      "address": "localhost",
+      "port": 9990,
+      "active": true,
+      "whitePatterns": [
+        {
+          "active": true,
+          "pattern": "*.yimg.com",
+          "type": 1,
+          "protocols": 1,
+          "title": "yahoo-rsrc"
+        },
+        {
+          "active": true,
+          "pattern": "*.staticflickr.com",
+          "type": 1,
+          "protocols": 1,
+          "title": "flickr-rsrc"
+        },
+        {
+          "active": true,
+          "pattern": "*.pastebin.com",
+          "type": 1,
+          "protocols": 1,
+          "title": "pastebin"
+        },
+        {
+          "active": true,
+          "pattern": "*.flickr.com",
+          "type": 1,
+          "protocols": 1,
+          "title": "flickr"
+        },
+        {
+          "active": true,
+          "pattern": "*.vimeocdn.com",
+          "type": 1,
+          "protocols": 1,
+          "title": "vimeocdn"
+        },
+        {
+          "active": true,
+          "pattern": "*.vimeo.com",
+          "type": 1,
+          "protocols": 1,
+          "title": "vimeo"
+        },
+        {
+          "active": true,
+          "pattern": "*.googlevideo.com",
+          "type": 1,
+          "protocols": 1,
+          "title": "youtube-googlevideo"
+        },
+        {
+          "active": true,
+          "pattern": "t.co",
+          "type": 1,
+          "protocols": 1,
+          "title": "twitter-short"
+        },
+        {
+          "active": true,
+          "pattern": "*.twimg.com",
+          "type": 1,
+          "protocols": 1,
+          "title": "twitter-rsrc"
+        },
+        {
+          "active": true,
+          "pattern": "*.ytimg.com",
+          "type": 1,
+          "protocols": 1,
+          "title": "youtube-rsrc"
+        },
+        {
+          "active": true,
+          "pattern": "*.youtube.com",
+          "type": 1,
+          "protocols": 1,
+          "title": "youtube"
+        },
+        {
+          "active": true,
+          "pattern": "*.twitter.com",
+          "type": 1,
+          "protocols": 1,
+          "title": "twitter"
+        },
+        {
+          "active": true,
+          "pattern": "*.9gag.com",
+          "type": 1,
+          "protocols": 1,
+          "title": "9gag"
+        },
+        {
+          "active": true,
+          "pattern": "*.quora.com",
+          "type": 1,
+          "protocols": 1,
+          "title": "quora"
+        },
+        {
+          "active": true,
+          "pattern": "*.facebook.com",
+          "type": 1,
+          "protocols": 1,
+          "title": "facebook"
+        },
+        {
+          "title": "youtu.be",
+          "active": true,
+          "pattern": "youtu.be",
+          "type": 1,
+          "protocols": 1
+        },
+        {
+          "title": "pornhub-cdn",
+          "active": true,
+          "pattern": "*.phncdn.com",
+          "type": 1,
+          "protocols": 1
+        },
+        {
+          "title": "disqus",
+          "active": true,
+          "pattern": "*.disqus.com",
+          "type": 1,
+          "protocols": 1
+        },
+        {
+          "title": "facebook-rsrc",
+          "active": true,
+          "pattern": "*.fbcdn.net",
+          "type": 1,
+          "protocols": 1
+        },
+        {
+          "title": "giphy",
+          "active": true,
+          "pattern": "*.giphy.com",
+          "type": 1,
+          "protocols": 1
+        }
+      ],
+      "blackPatterns": [
+        {
+          "title": "local hostnames (usually no dots in the name). Pattern exists because 'Do not use this proxy for localhost and intranet/private IP addresses' is checked.",
+          "active": true,
+          "pattern": "^(?:[^:@/]+(?::[^@/]+)?@)?(?:localhost|127\\.\\d+\\.\\d+\\.\\d+)(?::\\d+)?(?:/.*)?$",
+          "type": 2,
+          "protocols": 1
+        },
+        {
+          "title": "local subnets (IANA reserved address space). Pattern exists because 'Do not use this proxy for localhost and intranet/private IP addresses' is checked.",
+          "active": true,
+          "pattern": "^(?:[^:@/]+(?::[^@/]+)?@)?(?:192\\.168\\.\\d+\\.\\d+|10\\.\\d+\\.\\d+\\.\\d+|172\\.(?:1[6789]|2[0-9]|3[01])\\.\\d+\\.\\d+)(?::\\d+)?(?:/.*)?$",
+          "type": 2,
+          "protocols": 1
+        },
+        {
+          "title": "localhost - matches the local host optionally prefixed by a user:password authentication string and optionally suffixed by a port number. The entire local subnet (127.0.0.0/8) matches. Pattern exists because 'Do not use this proxy for localhost and intranet/private IP addresses' is checked.",
+          "active": true,
+          "pattern": "^(?:[^:@/]+(?::[^@/]+)?@)?[\\w-]+(?::\\d+)?(?:/.*)?$",
+          "type": 2,
+          "protocols": 1
+        },
+        {
+          "title": "local hostnames (usually no dots in the name). Pattern exists because 'Do not use this proxy for localhost and intranet/private IP addresses' is checked.",
+          "active": true,
+          "pattern": "^(?:[^:@/]+(?::[^@/]+)?@)?(?:localhost|127\\.\\d+\\.\\d+\\.\\d+)(?::\\d+)?(?:/.*)?$",
+          "type": 2,
+          "protocols": 1
+        },
+        {
+          "title": "local subnets (IANA reserved address space). Pattern exists because 'Do not use this proxy for localhost and intranet/private IP addresses' is checked.",
+          "active": true,
+          "pattern": "^(?:[^:@/]+(?::[^@/]+)?@)?(?:192\\.168\\.\\d+\\.\\d+|10\\.\\d+\\.\\d+\\.\\d+|172\\.(?:1[6789]|2[0-9]|3[01])\\.\\d+\\.\\d+)(?::\\d+)?(?:/.*)?$",
+          "type": 2,
+          "protocols": 1
+        },
+        {
+          "title": "localhost - matches the local host optionally prefixed by a user:password authentication string and optionally suffixed by a port number. The entire local subnet (127.0.0.0/8) matches. Pattern exists because 'Do not use this proxy for localhost and intranet/private IP addresses' is checked.",
+          "active": true,
+          "pattern": "^(?:[^:@/]+(?::[^@/]+)?@)?[\\w-]+(?::\\d+)?(?:/.*)?$",
+          "type": 2,
+          "protocols": 1
+        },
+        {
+          "title": "local hostnames (usually no dots in the name). Pattern exists because 'Do not use this proxy for localhost and intranet/private IP addresses' is checked.",
+          "active": true,
+          "pattern": "^(?:[^:@/]+(?::[^@/]+)?@)?(?:localhost|127\\.\\d+\\.\\d+\\.\\d+)(?::\\d+)?(?:/.*)?$",
+          "type": 2,
+          "protocols": 1
+        },
+        {
+          "title": "local subnets (IANA reserved address space). Pattern exists because 'Do not use this proxy for localhost and intranet/private IP addresses' is checked.",
+          "active": true,
+          "pattern": "^(?:[^:@/]+(?::[^@/]+)?@)?(?:192\\.168\\.\\d+\\.\\d+|10\\.\\d+\\.\\d+\\.\\d+|172\\.(?:1[6789]|2[0-9]|3[01])\\.\\d+\\.\\d+)(?::\\d+)?(?:/.*)?$",
+          "type": 2,
+          "protocols": 1
+        },
+        {
+          "title": "localhost - matches the local host optionally prefixed by a user:password authentication string and optionally suffixed by a port number. The entire local subnet (127.0.0.0/8) matches. Pattern exists because 'Do not use this proxy for localhost and intranet/private IP addresses' is checked.",
+          "active": true,
+          "pattern": "^(?:[^:@/]+(?::[^@/]+)?@)?[\\w-]+(?::\\d+)?(?:/.*)?$",
+          "type": 2,
+          "protocols": 1
+        }
+      ],
+      "id": "dei2n1511781837126"
+    },
+    {
+      "title": "No Proxy",
+      "type": 5,
+      "color": "#e5c758",
+      "active": true,
+      "whitePatterns": [
+        {
+          "title": "all URLs",
+          "active": true,
+          "pattern": "*",
+          "type": 1,
+          "protocols": 1
+        }
+      ],
+      "blackPatterns": [],
+      "id": "k20d21508277536715"
+    }
+  ],
+  "logging": {
+    "active": true,
+    "maxSize": 500
+  }
+}

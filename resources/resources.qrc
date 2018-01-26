@@ -1,0 +1,11 @@
+<RCC>
+  <qresource prefix="logo">
+    <file>logo.png</file>
+  </qresource>
+  <qresource prefix="icon">
+    <file>appicon.png</file>
+  </qresource>
+  <qresource prefix="tick">
+    <file>tick.svg</file>
+  </qresource>
+</RCC>
