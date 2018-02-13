@@ -236,8 +236,8 @@ class GenerateMitmCertificates(InterruptableTask):
 class GetRootCertificatesFromWindows(InterruptableTask):
     @staticmethod
     def split_certificates(raw_info):
-        matches = re.findall("={4,} Certificate ([0-9]+) ={4,}\nSerial Number:.*\nIssuer:.*O=%s,.*\n(?:(?:(?!sha1).)*\n)+.*sha1.*([0-9a-fA-F]{40})" % mitmproxy_certificate_issuer, raw_info)
-        return dict(map(lambda match: (match[0], match[1]), matches))
+        matches = re.findall("={4,} Certificate ([0-9]+) ={4,}\nSerial Number:.*\nIssuer:.*O=%s,.*\n(?:(?:(?!sha1).)*\n)+.*sha1[^:]*:([^\n]+)" % mitmproxy_certificate_issuer, raw_info)
+        return dict(map(lambda match: (match[0], match[1].replace(' ', '').replace(':', '').lower()), matches))
 
     def run(self):
         logger.info("Installing mitmproxy root certificate on windows..")
