@@ -19,7 +19,7 @@ Build mitmdump in a non __onefile__ fashion from source :
 2. Open up a PowerShell as administrator
 3. Disable execution policies using `Set-ExecutionPolicy Bypass -Scope LocalMachine`
 4. Run `.\dev.ps1` to get in an isolated python environment and retrieve all dependencies
-5. Install `pip install pyinstaller` within the environment
+5. Install `pip install pyinstaller pypiwin32` within the environment
 6. Make two modifications on `.\release\rtool.py` before running it:
    1. Find this around line 65-70 and change it
     
@@ -53,3 +53,18 @@ Build mitmdump in a non __onefile__ fashion from source :
                  # "--log-level", "WARN",
              ]
       ```
+     3. Remove these lines 68-70
+         ```
+        if platform.system() == "Windows":
+           BDISTS["mitmproxy"].remove("mitmproxy")
+           
+         ```
+     4. And change this at line 248
+      
+        ```
+          executable += ".exe"
+        ``` 
+        to:
+        ```
+          executable += "\\" + tool + ".exe"
+        ```

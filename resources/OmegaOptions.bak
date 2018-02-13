@@ -1,0 +1,61 @@
+{
+  "-showExternalProfile": true,
+  "schemaVersion": 2,
+  "-enableQuickSwitch": false,
+  "-refreshOnProfileChange": true,
+  "-startupProfileName": "",
+  "-quickSwitchProfiles": [
+    "torproxy"
+  ],
+  "-revertProxyChanges": true,
+  "-confirmDeletion": true,
+  "-showInspectMenu": true,
+  "-addConditionsToBottom": false,
+  "-downloadInterval": 360,
+  "-monitorWebRequests": true,
+  "-exportLegacyRuleList": false,
+  "+kiteproxy": {
+    "bypassList": [
+      {
+        "pattern": "127.0.0.1",
+        "conditionType": "BypassCondition"
+      },
+      {
+        "pattern": "::1",
+        "conditionType": "BypassCondition"
+      },
+      {
+        "pattern": "localhost",
+        "conditionType": "BypassCondition"
+      }
+    ],
+    "profileType": "FixedProfile",
+    "name": "kiteproxy",
+    "color": "#ffa000",
+    "fallbackProxy": {
+      "port": 9990,
+      "scheme": "http",
+      "host": "localhost"
+    },
+    "revision": "1615590915a"
+  },
+  "-showConditionTypes": 0,
+  "+auto": {
+    "profileType": "SwitchProfile",
+    "name": "auto",
+    "defaultProfileName": "__ruleListOf_auto",
+    "rules": [],
+    "color": "#9d9",
+    "revision": "1616af23954"
+  },
+  "+__ruleListOf_auto": {
+    "name": "__ruleListOf_auto",
+    "defaultProfileName": "direct",
+    "profileType": "RuleListProfile",
+    "color": "#9d9",
+    "format": "Switchy",
+    "matchProfileName": "kiteproxy",
+    "ruleList": "*.cloudfront.net\n*.manototv.com\n*.yimg.com\n*.staticflickr.com\n*.pastebin.com\n*.flickr.com\n*.vimeocdn.com\n*.vimeo.com\n*.googlevideo.com\nt.co\n*.twimg.com\n*.ytimg.com\n*.youtube.com\n*.twitter.com\n*.9gag.com\n*.quora.com\n*.facebook.com\nyoutu.be\n*.phncdn.com\n*.disqus.com\n*.fbcdn.net\n*.giphy.com\n*.facebook.net\n*.ggpht.com",
+    "revision": "1616b22bd84"
+  }
+}

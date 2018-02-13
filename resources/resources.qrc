@@ -2,6 +2,19 @@
   <qresource prefix="logo">
     <file>logo.png</file>
   </qresource>
+  <qresource prefix="controls">
+    <file>checkbox-active.svg</file>
+  </qresource>
+  <qresource prefix="fonts">
+    <file>fonts/SF-Pro-Display-Bold.ttf</file>
+    <file>fonts/SF-Pro-Display-Medium.ttf</file>
+    <file>fonts/SF-Pro-Display-Regular.ttf</file>
+  </qresource>
+  <qresource prefix="monitor">
+    <file>ok.svg</file>
+    <file>loading.svg</file>
+    <file>error.svg</file>
+  </qresource>
   <qresource prefix="icon">
     <file>appicon.png</file>
   </qresource>

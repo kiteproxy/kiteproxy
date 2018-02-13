@@ -4,13 +4,17 @@ del /Q /s build
 rd  /Q /s __pycache__
 rd  /Q /s dist
 rd  /Q /s build
+call .\venv\Scripts\activate.bat
 pyinstaller ^
---windowed ^
 --icon resources/appicon.ico ^
 --name setup ^
---paths "C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64" ^
---add-data resources/foxyproxy.json;resources ^
+--windowed ^
+--uac-admin ^
+--paths "C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x86" ^
+--add-data resources/*.bak;resources ^
 --add-data resources/*.ui;resources ^
---add-data resources/help;resources/help ^
-gui.py
+--add-data resources/*.mp4;resources ^
+--add-data resources/nssm.exe;resources ^
+main.py
+call deactivate.bat
 ren .\dist\setup kiteproxy

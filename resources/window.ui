@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>847</width>
-    <height>483</height>
+    <width>913</width>
+    <height>480</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -15,6 +15,11 @@
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
+  </property>
+  <property name="font">
+   <font>
+    <family>SF Pro Display</family>
+   </font>
   </property>
   <property name="windowTitle">
    <string>Install KiteProxy</string>
@@ -37,6 +42,11 @@
      <width>620</width>
      <height>420</height>
     </size>
+   </property>
+   <property name="font">
+    <font>
+     <family>SF Pro Display</family>
+    </font>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <property name="spacing">
@@ -68,10 +78,15 @@
         <height>0</height>
        </size>
       </property>
+      <property name="font">
+       <font>
+        <family>SF Pro Display</family>
+       </font>
+      </property>
       <property name="styleSheet">
        <string notr="true">padding: 6px 20px;</string>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_2">
+      <layout class="QVBoxLayout" name="verticalLayout_7">
        <property name="spacing">
         <number>0</number>
        </property>
@@ -90,7 +105,7 @@
        <item>
         <widget class="QLabel" name="logo">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -98,11 +113,16 @@
          <property name="minimumSize">
           <size>
            <width>0</width>
-           <height>130</height>
+           <height>0</height>
           </size>
          </property>
+         <property name="font">
+          <font>
+           <family>SF Pro Display</family>
+          </font>
+         </property>
          <property name="styleSheet">
-          <string notr="true">padding-top: 17px;</string>
+          <string notr="true">padding-left: 27px; padding-top: 17px; padding-bottom: 9px; margin-bottom: 85px;</string>
          </property>
          <property name="text">
           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/logo/logo.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -116,94 +136,186 @@
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="side_step0">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>32</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
+        <widget class="QWidget" name="steps" native="true">
          <property name="styleSheet">
-          <string notr="true">background: #747474;
+          <string notr="true">QLabel {
+	font-family: &quot;SF Pro Display&quot;;
+	font-size: 10pt;
+}</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="side_step0">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font-weight: 500;
+color: #a2a2a2; padding: 8px 20px;</string>
+            </property>
+            <property name="text">
+             <string>Home</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="side_step1">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background: #747474;
 font-weight: bold;
-color: white;</string>
-         </property>
-         <property name="text">
-          <string>Options</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="side_step1">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>32</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">font-weight: normal;
-color: #a2a2a2;</string>
-         </property>
-         <property name="text">
-          <string>Install</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="side_step2">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>32</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">font-weight: normal;
-color: #a2a2a2;</string>
-         </property>
-         <property name="text">
-          <string>Post Installation</string>
-         </property>
+color: white;
+padding: 12px 20px; margin: 5px 0;</string>
+            </property>
+            <property name="text">
+             <string>Select Features</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="side_step2">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font-weight: 500;
+color: #a2a2a2; padding: 8px 20px;</string>
+            </property>
+            <property name="text">
+             <string>Install</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="side_step3">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font-weight: 500;
+color: #a2a2a2; padding: 8px 20px;</string>
+            </property>
+            <property name="text">
+             <string>Post Installation</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="side_step4">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font-weight: 500;
+color: #a2a2a2; padding: 8px 20px;</string>
+            </property>
+            <property name="text">
+             <string>Monitor</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
        <item>
         <spacer name="verticalSpacer">
+         <property name="font">
+          <font>
+           <family>SF Pro Display</family>
+          </font>
+         </property>
          <property name="orientation">
           <enum>Qt::Vertical</enum>
          </property>
@@ -216,18 +328,21 @@ color: #a2a2a2;</string>
         </spacer>
        </item>
       </layout>
-      <zorder>side_step2</zorder>
       <zorder>logo</zorder>
-      <zorder>side_step0</zorder>
-      <zorder>side_step1</zorder>
       <zorder>verticalSpacer</zorder>
+      <zorder>steps</zorder>
      </widget>
     </item>
     <item>
      <widget class="QWidget" name="contents" native="true">
+      <property name="font">
+       <font>
+        <family>SF Pro Display</family>
+       </font>
+      </property>
       <property name="styleSheet">
        <string notr="true">background: #606060;
-padding: 10px 10px;
+padding: 0;
 color: white;</string>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
@@ -262,15 +377,17 @@ color: white;</string>
          </property>
          <property name="font">
           <font>
-           <family>Tahoma</family>
+           <family>SF Pro Display</family>
            <pointsize>14</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
           </font>
          </property>
          <property name="styleSheet">
           <string notr="true">padding-left: 20px</string>
          </property>
          <property name="text">
-          <string>Title</string>
+          <string>Gain back your right for freedom</string>
          </property>
         </widget>
        </item>
@@ -278,12 +395,36 @@ color: white;</string>
         <widget class="QWidget" name="container_styled" native="true">
          <property name="font">
           <font>
-           <family>Tahoma</family>
+           <family>SF Pro Display</family>
            <pointsize>10</pointsize>
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 #333 stop:0.02 #4a4a4a, stop: 0.98 #4a4a4a,  stop: 1 #333)</string>
+          <string notr="true">QWidget {
+  background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 #333 stop:0.02 #4a4a4a, stop: 0.98 #4a4a4a,  stop: 1 #333);
+}
+QPushButton {
+  font-family: 'SF Pro Display';
+  font-size: 9pt;  
+}
+QCheckBox::indicator {
+  border: 1px solid #646464;
+  padding: 1px;
+  background: #757575;
+  width: 15px;
+  height: 15px;
+}
+
+QCheckBox::indicator:disabled {
+  border: none;
+  background-color: rgb(58, 58, 58);
+}
+
+QCheckBox::indicator:checked {
+  background-image: url(:/controls/checkbox-active.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+}</string>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_4">
           <property name="spacing">
@@ -303,23 +444,321 @@ color: white;</string>
           </property>
           <item>
            <widget class="QStackedWidget" name="stackedWidget">
+            <property name="font">
+             <font>
+              <family>SF Pro Display</family>
+             </font>
+            </property>
             <property name="styleSheet">
              <string notr="true">background: transparent</string>
             </property>
             <property name="currentIndex">
-             <number>2</number>
+             <number>4</number>
             </property>
-            <widget class="QWidget" name="page1">
-             <widget class="QWidget" name="layoutWidget">
+            <widget class="QWidget" name="page0">
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <widget class="QLabel" name="what_to_do_lbl">
+              <property name="geometry">
+               <rect>
+                <x>30</x>
+                <y>37</y>
+                <width>361</width>
+                <height>21</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>SF Pro Display</family>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: white;</string>
+              </property>
+              <property name="text">
+               <string>What do you want to do ?</string>
+              </property>
+             </widget>
+             <widget class="QPushButton" name="wtd_install_btn">
+              <property name="geometry">
+               <rect>
+                <x>30</x>
+                <y>80</y>
+                <width>222</width>
+                <height>42</height>
+               </rect>
+              </property>
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>SF Pro Display</family>
+                <pointsize>9</pointsize>
+                <weight>62</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton {
+  color: white;
+  font-weight: 500;
+  background: #49c668;
+  border: none;
+  padding: 0 5;
+}
+QPushButton:pressed {
+  background: #36944c;
+}</string>
+              </property>
+              <property name="text">
+               <string>Install / Upgrade</string>
+              </property>
+             </widget>
+             <widget class="QWidget" name="wtd_uninstall_container" native="true">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="geometry">
+               <rect>
+                <x>280</x>
+                <y>70</y>
+                <width>281</width>
+                <height>131</height>
+               </rect>
+              </property>
+              <widget class="QLabel" name="wtd_uninstall_caution_lbl">
+               <property name="geometry">
+                <rect>
+                 <x>10</x>
+                 <y>102</y>
+                 <width>261</width>
+                 <height>21</height>
+                </rect>
+               </property>
+               <property name="font">
+                <font>
+                 <family>SF Pro Display</family>
+                 <pointsize>9</pointsize>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color: white;</string>
+               </property>
+               <property name="text">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#d46163;&quot;&gt;Warning:&lt;/span&gt; This action can not be undone !&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+              </widget>
+              <widget class="QCheckBox" name="wtd_uninstall_clearcache_chck">
+               <property name="enabled">
+                <bool>true</bool>
+               </property>
+               <property name="geometry">
+                <rect>
+                 <x>10</x>
+                 <y>66</y>
+                 <width>211</width>
+                 <height>30</height>
+                </rect>
+               </property>
+               <property name="font">
+                <font>
+                 <family>SF Pro Display</family>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot;color: black;&quot;&gt;Firefox will be downloaded and installed only if you don't have firefox &amp;gt;= 57 on your system&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="autoFillBackground">
+                <bool>false</bool>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
+               <property name="text">
+                <string>Clear download cache</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+               <property name="checked">
+                <bool>true</bool>
+               </property>
+              </widget>
+              <widget class="QPushButton" name="wtd_uninstall_btn">
+               <property name="geometry">
+                <rect>
+                 <x>10</x>
+                 <y>10</y>
+                 <width>222</width>
+                 <height>42</height>
+                </rect>
+               </property>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>SF Pro Display</family>
+                 <pointsize>9</pointsize>
+                 <weight>62</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+  color: white;
+  font-weight: 500;
+  background: #ec3a3e;
+  border: none;
+  padding: 0 5;
+}
+QPushButton:pressed {
+  background: #992529;
+}</string>
+               </property>
+               <property name="text">
+                <string>Uninstall</string>
+               </property>
+              </widget>
+             </widget>
+             <widget class="QWidget" name="widget_2" native="true">
               <property name="geometry">
                <rect>
                 <x>10</x>
-                <y>37</y>
-                <width>405</width>
-                <height>187</height>
+                <y>210</y>
+                <width>301</width>
+                <height>111</height>
                </rect>
               </property>
+              <widget class="QPushButton" name="wtd_monitor_btn">
+               <property name="geometry">
+                <rect>
+                 <x>20</x>
+                 <y>17</y>
+                 <width>222</width>
+                 <height>42</height>
+                </rect>
+               </property>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>SF Pro Display</family>
+                 <pointsize>9</pointsize>
+                 <weight>62</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+  color: white;
+  font-weight: 500;
+  background: #00aec4;
+  border: none;
+  padding: 0 5;
+}
+QPushButton:pressed {
+  background: rgb(0, 116, 129);
+}</string>
+               </property>
+               <property name="text">
+                <string>Monitor</string>
+               </property>
+              </widget>
+              <widget class="QLabel" name="wtd_monitor_help_lbl">
+               <property name="geometry">
+                <rect>
+                 <x>20</x>
+                 <y>70</y>
+                 <width>271</width>
+                 <height>30</height>
+                </rect>
+               </property>
+               <property name="font">
+                <font>
+                 <family>SF Pro Display</family>
+                 <pointsize>10</pointsize>
+                 <underline>true</underline>
+                </font>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
+               <property name="text">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;span style=&quot;text-decoration: none;&quot;&gt;Do you need any help?&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;a href=&quot;#&quot; style=&quot;color: #00aec4; text-decoration: underline;&quot;&gt;check How To&lt;/a&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+              </widget>
+             </widget>
+            </widget>
+            <widget class="QWidget" name="page1">
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <widget class="QWidget" name="layoutWidget">
+              <property name="geometry">
+               <rect>
+                <x>30</x>
+                <y>30</y>
+                <width>417</width>
+                <height>259</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>SF Pro Display</family>
+               </font>
+              </property>
               <layout class="QVBoxLayout" name="options">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+               <property name="leftMargin">
+                <number>20</number>
+               </property>
                <item>
                 <widget class="QCheckBox" name="optionDnsCrypt">
                  <property name="enabled">
@@ -327,7 +766,7 @@ color: white;</string>
                  </property>
                  <property name="font">
                   <font>
-                   <family>Tahoma</family>
+                   <family>SF Pro Display</family>
                    <pointsize>10</pointsize>
                   </font>
                  </property>
@@ -335,7 +774,7 @@ color: white;</string>
                   <string notr="true"/>
                  </property>
                  <property name="text">
-                  <string>Secure Operator (Google DNS-over-HTTPS)</string>
+                  <string>  Secure Operator (Google DNS-over-HTTPS)</string>
                  </property>
                  <property name="checkable">
                   <bool>true</bool>
@@ -352,7 +791,7 @@ color: white;</string>
                  </property>
                  <property name="font">
                   <font>
-                   <family>Tahoma</family>
+                   <family>SF Pro Display</family>
                    <pointsize>10</pointsize>
                   </font>
                  </property>
@@ -360,7 +799,7 @@ color: white;</string>
                   <string notr="true"/>
                  </property>
                  <property name="text">
-                  <string>Mitm Proxy (Traffic Transformer)</string>
+                  <string>  Mitm Proxy (Traffic Transformer)</string>
                  </property>
                  <property name="checkable">
                   <bool>true</bool>
@@ -377,7 +816,7 @@ color: white;</string>
                  </property>
                  <property name="font">
                   <font>
-                   <family>Tahoma</family>
+                   <family>SF Pro Display</family>
                    <pointsize>10</pointsize>
                   </font>
                  </property>
@@ -391,7 +830,7 @@ color: white;</string>
                   <string notr="true"/>
                  </property>
                  <property name="text">
-                  <string>Firefox</string>
+                  <string>  Firefox</string>
                  </property>
                  <property name="checkable">
                   <bool>true</bool>
@@ -402,13 +841,13 @@ color: white;</string>
                 </widget>
                </item>
                <item>
-                <widget class="QCheckBox" name="optionFoxyProxy">
+                <widget class="QCheckBox" name="optionSwitchyOmega">
                  <property name="enabled">
                   <bool>true</bool>
                  </property>
                  <property name="font">
                   <font>
-                   <family>Tahoma</family>
+                   <family>SF Pro Display</family>
                    <pointsize>10</pointsize>
                   </font>
                  </property>
@@ -416,7 +855,7 @@ color: white;</string>
                   <string notr="true">margin-left: 20px;</string>
                  </property>
                  <property name="text">
-                  <string>FoxyProxy (Proxy Switcher)</string>
+                  <string>  SwitchyOmega (Automatic Proxy Switcher)</string>
                  </property>
                  <property name="checkable">
                   <bool>true</bool>
@@ -430,22 +869,10 @@ color: white;</string>
              </widget>
             </widget>
             <widget class="QWidget" name="page2">
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
              <layout class="QVBoxLayout" name="verticalLayout_4">
-              <property name="spacing">
-               <number>7</number>
-              </property>
-              <property name="leftMargin">
-               <number>5</number>
-              </property>
-              <property name="topMargin">
-               <number>10</number>
-              </property>
-              <property name="rightMargin">
-               <number>5</number>
-              </property>
-              <property name="bottomMargin">
-               <number>8</number>
-              </property>
               <item>
                <widget class="QProgressBar" name="progress_bar">
                 <property name="sizePolicy">
@@ -464,6 +891,7 @@ color: white;</string>
                  <string notr="true">QProgressBar {
   text-align: right;  
   padding: 0;
+  margin-bottom: 0;
   color: white;
   background-color: #343434;
   border: 1 solid #353535;
@@ -473,7 +901,7 @@ QProgressBar::chunk {
 }</string>
                 </property>
                 <property name="value">
-                 <number>50</number>
+                 <number>0</number>
                 </property>
                 <property name="textVisible">
                  <bool>false</bool>
@@ -497,16 +925,17 @@ QProgressBar::chunk {
                 <property name="maximumSize">
                  <size>
                   <width>16777215</width>
-                  <height>22</height>
+                  <height>21</height>
                  </size>
                 </property>
                 <property name="font">
                  <font>
+                  <family>SF Pro Display</family>
                   <pointsize>9</pointsize>
                  </font>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">padding: 0;</string>
+                 <string notr="true"/>
                 </property>
                 <property name="text">
                  <string>0% complete</string>
@@ -526,30 +955,48 @@ QProgressBar::chunk {
                 </property>
                 <property name="font">
                  <font>
-                  <family>Tahoma</family>
+                  <family>SF Pro Display</family>
                   <pointsize>9</pointsize>
                  </font>
                 </property>
+                <property name="autoFillBackground">
+                 <bool>true</bool>
+                </property>
                 <property name="styleSheet">
-                 <string notr="true">padding: 5px;
-color: #A9B7C6;
-background: #343434;
-border: 1 solid #343434;</string>
+                 <string notr="true">QTextEdit {
+  margin: 0;
+  padding: 1px;
+  color: white;
+  background: #343434;
+  border: 1 solid #343434;
+}</string>
+                </property>
+                <property name="inputMethodHints">
+                 <set>Qt::ImhMultiLine</set>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Plain</enum>
                 </property>
                 <property name="verticalScrollBarPolicy">
-                 <enum>Qt::ScrollBarAlwaysOn</enum>
+                 <enum>Qt::ScrollBarAsNeeded</enum>
                 </property>
                 <property name="horizontalScrollBarPolicy">
-                 <enum>Qt::ScrollBarAlwaysOn</enum>
+                 <enum>Qt::ScrollBarAsNeeded</enum>
+                </property>
+                <property name="sizeAdjustPolicy">
+                 <enum>QAbstractScrollArea::AdjustIgnored</enum>
                 </property>
                 <property name="lineWrapMode">
                  <enum>QTextEdit::NoWrap</enum>
                 </property>
                 <property name="html">
-                 <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+                 <string notr="true">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Tahoma'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SF Pro Display'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Installing...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                </widget>
@@ -560,22 +1007,14 @@ p, li { white-space: pre-wrap; }
              <property name="styleSheet">
               <string notr="true"/>
              </property>
-             <widget class="QPushButton" name="foxyproxy_save_btn">
+             <widget class="QPushButton" name="switchyomega_save_btn">
               <property name="geometry">
                <rect>
                 <x>30</x>
-                <y>134</y>
+                <y>140</y>
                 <width>222</width>
                 <height>35</height>
                </rect>
-              </property>
-              <property name="font">
-               <font>
-                <family>Tahoma</family>
-                <pointsize>9</pointsize>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
               </property>
               <property name="cursor">
                <cursorShape>PointingHandCursor</cursorShape>
@@ -583,6 +1022,7 @@ p, li { white-space: pre-wrap; }
               <property name="styleSheet">
                <string notr="true">QPushButton {
   color: black;
+  font-weight: 500;
   background: #f49900;
   border: 1px solid #4f4f4f;
   padding: 0 5;
@@ -595,18 +1035,18 @@ QPushButton:pressed {
                <string>Save Config</string>
               </property>
              </widget>
-             <widget class="QLabel" name="foxyproxy_conf_help">
+             <widget class="QLabel" name="switchyomega_conf">
               <property name="geometry">
                <rect>
-                <x>19</x>
-                <y>178</y>
-                <width>221</width>
-                <height>41</height>
+                <x>32</x>
+                <y>90</y>
+                <width>361</width>
+                <height>21</height>
                </rect>
               </property>
               <property name="font">
                <font>
-                <family>Tahoma</family>
+                <family>SF Pro Display</family>
                 <pointsize>10</pointsize>
                </font>
               </property>
@@ -614,43 +1054,21 @@ QPushButton:pressed {
                <string notr="true">color: white;</string>
               </property>
               <property name="text">
-               <string>Do you need any help?</string>
+               <string>Import SwitchyOmega auto proxy configurations</string>
               </property>
              </widget>
-             <widget class="QLabel" name="foxyproxy_conf">
+             <widget class="QLabel" name="switchyomega_conf_link">
               <property name="geometry">
                <rect>
-                <x>20</x>
-                <y>81</y>
-                <width>481</width>
-                <height>41</height>
+                <x>32</x>
+                <y>183</y>
+                <width>351</width>
+                <height>30</height>
                </rect>
               </property>
               <property name="font">
                <font>
-                <family>Tahoma</family>
-                <pointsize>10</pointsize>
-               </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">color: white;</string>
-              </property>
-              <property name="text">
-               <string>Import FoxyProxy auto proxy configurations</string>
-              </property>
-             </widget>
-             <widget class="QLabel" name="foxyproxy_conf_link">
-              <property name="geometry">
-               <rect>
-                <x>194</x>
-                <y>164</y>
-                <width>130</width>
-                <height>70</height>
-               </rect>
-              </property>
-              <property name="font">
-               <font>
-                <family>Tahoma</family>
+                <family>SF Pro Display</family>
                 <pointsize>10</pointsize>
                 <underline>true</underline>
                </font>
@@ -662,21 +1080,21 @@ QPushButton:pressed {
                <string notr="true"/>
               </property>
               <property name="text">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;a href=&quot;#&quot; style=&quot;color: #00aec4; text-decoration: underline;&quot;&gt;check How To&lt;/a&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;span style=&quot;text-decoration: none;&quot;&gt;Do you need any help?&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;a href=&quot;#&quot; style=&quot;color: #00aec4; text-decoration: underline;&quot;&gt;check How To&lt;/a&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
              </widget>
              <widget class="QLabel" name="success_msg">
               <property name="geometry">
                <rect>
-                <x>20</x>
-                <y>10</y>
-                <width>481</width>
-                <height>71</height>
+                <x>30</x>
+                <y>20</y>
+                <width>371</width>
+                <height>50</height>
                </rect>
               </property>
               <property name="font">
                <font>
-                <family>Tahoma</family>
+                <family>SF Pro Display</family>
                 <pointsize>10</pointsize>
                </font>
               </property>
@@ -700,6 +1118,539 @@ QPushButton:pressed {
               </property>
              </widget>
             </widget>
+            <widget class="QWidget" name="page4">
+             <property name="autoFillBackground">
+              <bool>false</bool>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: #f3f3f3;</string>
+             </property>
+             <layout class="QGridLayout" name="gridLayout">
+              <item row="0" column="0">
+               <widget class="QWidget" name="p4_container" native="true">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>700</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_6">
+                 <property name="spacing">
+                  <number>15</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QWidget" name="subsystems_panel" native="true">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>278</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>SF Pro Display</family>
+                    </font>
+                   </property>
+                   <layout class="QHBoxLayout" name="horizontalLayout_2">
+                    <property name="spacing">
+                     <number>7</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="QWidget" name="subsystem_dns_container" native="true">
+                      <property name="font">
+                       <font>
+                        <family>SF Pro Display</family>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">background-color: white;</string>
+                      </property>
+                      <layout class="QVBoxLayout" name="verticalLayout_3">
+                       <property name="spacing">
+                        <number>17</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>15</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>40</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>15</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>40</number>
+                       </property>
+                       <item>
+                        <widget class="QLabel" name="subsystem_dns_title">
+                         <property name="font">
+                          <font>
+                           <family>SF Pro Display</family>
+                           <pointsize>15</pointsize>
+                           <weight>50</weight>
+                           <bold>false</bold>
+                           <kerning>true</kerning>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">color: #4a4a4a; margin-bottom: 2px</string>
+                         </property>
+                         <property name="text">
+                          <string>Google Secure DNS</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignBottom|Qt::AlignHCenter</set>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QWidget" name="subsystem_dns_icon_wrapper" native="true">
+                         <layout class="QGridLayout" name="gridLayout_3">
+                          <property name="leftMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="spacing">
+                           <number>0</number>
+                          </property>
+                          <item row="0" column="0">
+                           <widget class="QLabel" name="subsystem_dns_icon">
+                            <property name="sizePolicy">
+                             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                              <horstretch>0</horstretch>
+                              <verstretch>0</verstretch>
+                             </sizepolicy>
+                            </property>
+                            <property name="maximumSize">
+                             <size>
+                              <width>60</width>
+                              <height>60</height>
+                             </size>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <family>SF Pro Display</family>
+                             </font>
+                            </property>
+                            <property name="layoutDirection">
+                             <enum>Qt::LeftToRight</enum>
+                            </property>
+                            <property name="text">
+                             <string/>
+                            </property>
+                            <property name="pixmap">
+                             <pixmap resource="resources.qrc">:/monitor/loading.svg</pixmap>
+                            </property>
+                            <property name="scaledContents">
+                             <bool>true</bool>
+                            </property>
+                            <property name="alignment">
+                             <set>Qt::AlignCenter</set>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLabel" name="subsystem_dns_state">
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>60</height>
+                          </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>SF Pro Display</family>
+                           <pointsize>9</pointsize>
+                           <weight>50</weight>
+                           <bold>false</bold>
+                           <kerning>true</kerning>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">color: #4a4a4a;</string>
+                         </property>
+                         <property name="text">
+                          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;waiting..&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignCenter</set>
+                         </property>
+                         <property name="wordWrap">
+                          <bool>true</bool>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QWidget" name="subsystem_sni_container" native="true">
+                      <property name="font">
+                       <font>
+                        <family>SF Pro Display</family>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">background-color: white;</string>
+                      </property>
+                      <layout class="QVBoxLayout" name="verticalLayout_5">
+                       <property name="spacing">
+                        <number>17</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>15</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>40</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>15</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>40</number>
+                       </property>
+                       <item>
+                        <widget class="QLabel" name="subsystem_sni_title">
+                         <property name="font">
+                          <font>
+                           <family>SF Pro Display</family>
+                           <pointsize>15</pointsize>
+                           <weight>50</weight>
+                           <bold>false</bold>
+                           <kerning>true</kerning>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">color: #4a4a4a; margin-bottom: 1px</string>
+                         </property>
+                         <property name="text">
+                          <string>SNI Obfuscator</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignBottom|Qt::AlignHCenter</set>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QWidget" name="subsystem_sni_icon_wrapper" native="true">
+                         <layout class="QGridLayout" name="gridLayout_2">
+                          <property name="leftMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="spacing">
+                           <number>0</number>
+                          </property>
+                          <item row="0" column="0">
+                           <widget class="QLabel" name="subsystem_sni_icon">
+                            <property name="sizePolicy">
+                             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                              <horstretch>0</horstretch>
+                              <verstretch>0</verstretch>
+                             </sizepolicy>
+                            </property>
+                            <property name="maximumSize">
+                             <size>
+                              <width>60</width>
+                              <height>60</height>
+                             </size>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <family>SF Pro Display</family>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string/>
+                            </property>
+                            <property name="pixmap">
+                             <pixmap resource="resources.qrc">:/monitor/loading.svg</pixmap>
+                            </property>
+                            <property name="scaledContents">
+                             <bool>true</bool>
+                            </property>
+                            <property name="alignment">
+                             <set>Qt::AlignCenter</set>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLabel" name="subsystem_sni_state">
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>60</height>
+                          </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>SF Pro Display</family>
+                           <pointsize>9</pointsize>
+                           <weight>50</weight>
+                           <bold>false</bold>
+                           <kerning>true</kerning>
+                          </font>
+                         </property>
+                         <property name="autoFillBackground">
+                          <bool>false</bool>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">color: #4a4a4a;</string>
+                         </property>
+                         <property name="text">
+                          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;waiting..&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignCenter</set>
+                         </property>
+                         <property name="wordWrap">
+                          <bool>true</bool>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QWidget" name="subsystem_tor_container" native="true">
+                      <property name="font">
+                       <font>
+                        <family>SF Pro Display</family>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">background-color: white;</string>
+                      </property>
+                      <layout class="QVBoxLayout" name="verticalLayout_8">
+                       <property name="spacing">
+                        <number>17</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>15</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>40</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>15</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>40</number>
+                       </property>
+                       <item>
+                        <widget class="QLabel" name="subsystem_tor_title">
+                         <property name="font">
+                          <font>
+                           <family>SF Pro Display</family>
+                           <pointsize>15</pointsize>
+                           <weight>50</weight>
+                           <bold>false</bold>
+                           <kerning>true</kerning>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">color: #4a4a4a; margin-bottom: 1px</string>
+                         </property>
+                         <property name="text">
+                          <string>Tor Onion Proxy</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignBottom|Qt::AlignHCenter</set>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QWidget" name="subsystem_tor_icon_wrapper" native="true">
+                         <layout class="QGridLayout" name="gridLayout_4">
+                          <property name="leftMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="spacing">
+                           <number>0</number>
+                          </property>
+                          <item row="0" column="0">
+                           <widget class="QLabel" name="subsystem_tor_icon">
+                            <property name="sizePolicy">
+                             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                              <horstretch>0</horstretch>
+                              <verstretch>0</verstretch>
+                             </sizepolicy>
+                            </property>
+                            <property name="maximumSize">
+                             <size>
+                              <width>60</width>
+                              <height>60</height>
+                             </size>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <family>SF Pro Display</family>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string/>
+                            </property>
+                            <property name="pixmap">
+                             <pixmap resource="resources.qrc">:/monitor/loading.svg</pixmap>
+                            </property>
+                            <property name="scaledContents">
+                             <bool>true</bool>
+                            </property>
+                            <property name="alignment">
+                             <set>Qt::AlignCenter</set>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLabel" name="subsystem_tor_state">
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>60</height>
+                          </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>SF Pro Display</family>
+                           <pointsize>9</pointsize>
+                           <weight>50</weight>
+                           <bold>false</bold>
+                           <kerning>true</kerning>
+                          </font>
+                         </property>
+                         <property name="autoFillBackground">
+                          <bool>false</bool>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">color: #4a4a4a;</string>
+                         </property>
+                         <property name="text">
+                          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;waiting..&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignCenter</set>
+                         </property>
+                         <property name="wordWrap">
+                          <bool>true</bool>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="monitor_overall_lbl">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>18</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>SF Pro Display</family>
+                     <pointsize>9</pointsize>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">color: #4a4a4a;
+ padding: 0 10px;</string>
+                   </property>
+                   <property name="text">
+                    <string>Overall progress..</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
            </widget>
           </item>
          </layout>
@@ -713,27 +1664,36 @@ QPushButton:pressed {
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
+         <property name="font">
+          <font>
+           <family>SF Pro Display</family>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: #e4e4e4
+
+</string>
+         </property>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
           <property name="spacing">
-           <number>0</number>
-          </property>
-          <property name="sizeConstraint">
-           <enum>QLayout::SetDefaultConstraint</enum>
-          </property>
-          <property name="leftMargin">
-           <number>0</number>
+           <number>11</number>
           </property>
           <property name="topMargin">
            <number>11</number>
           </property>
           <property name="rightMargin">
-           <number>0</number>
+           <number>15</number>
           </property>
           <property name="bottomMargin">
            <number>11</number>
           </property>
           <item>
            <spacer name="horizontalSpacer">
+            <property name="font">
+             <font>
+              <family>SF Pro Display</family>
+             </font>
+            </property>
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
@@ -746,7 +1706,7 @@ QPushButton:pressed {
            </spacer>
           </item>
           <item>
-           <widget class="QPushButton" name="action_btn">
+           <widget class="QPushButton" name="action_btn2">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -755,7 +1715,7 @@ QPushButton:pressed {
             </property>
             <property name="font">
              <font>
-              <family>Tahoma</family>
+              <family>SF Pro Display</family>
               <pointsize>10</pointsize>
              </font>
             </property>
@@ -771,16 +1731,57 @@ QPushButton:pressed {
             <property name="styleSheet">
              <string notr="true">QPushButton {
   color: white;
-  margin-right: 15px;
-  background: #5e5e5e;
-  border: 1px solid #4f4f4f;
+  padding: 7px 20px;
+  background: #0074c5;
+  border: 1px solid #005c9d;
+  border-radius: 2px;
 }
 QPushButton:pressed {
-  background: rgb(74, 74, 74);
+  background: rgb(0, 97, 162);
 }</string>
             </property>
             <property name="text">
-             <string>action</string>
+             <string>Back</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="action_btn">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <family>SF Pro Display</family>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::LeftToRight</enum>
+            </property>
+            <property name="autoFillBackground">
+             <bool>false</bool>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+  color: white;
+  padding: 7px 20px;
+  background: #00aec4;
+  border: 1px solid #008b9c;
+  border-radius: 2px;
+}
+QPushButton:pressed {
+  background: rgb(0, 156, 173);
+}</string>
+            </property>
+            <property name="text">
+             <string>Action</string>
             </property>
            </widget>
           </item>

@@ -1,1 +1,1 @@
-pyrcc5 .\resources\resources.qrc -o .\resources_rc.py
+.\venv\Scripts\pyrcc5 .\resources\resources.qrc -o .\gui\resources_rc.py

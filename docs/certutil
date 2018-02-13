@@ -1,0 +1,15 @@
+certutil => (win-bin)
+https://github.com/christian-korneck/firefox_add-certs/releases/download/1.0/firefox_add-certs.zip
+https://superuser.com/a/807262
+(linux-bin)
+http://mindref.blogspot.com/2011/02/nssdb-add-ca-certificate.html
+
+use certtool
+https://stackoverflow.com/questions/1435000/programmatically-install-certificate-into-mozilla
+https://thomas-leister.de/en/how-to-import-ca-root-certificate/
+https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/Reference/NSS_tools_:_certutil
+
+%ProgramFiles(x86)%\Mozilla Firefox\browser\defaults\profile
+
+http://dev.chromium.org/administrators/policy-list-3#ExtensionInstallForcelist
+https://github.com/mdamien/chrome-extensions-archive/issues/8#issuecomment-351725282

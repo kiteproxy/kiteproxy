@@ -1,0 +1,559 @@
+3.9. GETINFO
+
+  Sent from the client to the server.  The syntax is as for GETCONF:
+    "GETINFO" 1*(SP keyword) CRLF
+
+  Unlike GETCONF, this message is used for data that are not stored in the Tor
+  configuration file, and that may be longer than a single line.  On success,
+  one ReplyLine is sent for each requested value, followed by a final 250 OK
+  ReplyLine.  If a value fits on a single line, the format is:
+      250-keyword=value
+  If a value must be split over multiple lines, the format is:
+      250+keyword=
+      value
+      .
+  The server sends a 551 or 552 error on failure.
+
+  Recognized keys and their values include:
+
+    "version" -- The version of the server's software, which MAY include the
+      name of the software, such as "Tor 0.0.9.4".  The name of the software,
+      if absent, is assumed to be "Tor".
+
+    "config-file" -- The location of Tor's configuration file ("torrc").
+
+    "config-defaults-file" -- The location of Tor's configuration
+      defaults file ("torrc.defaults").  This file gets parsed before
+      torrc, and is typically used to replace Tor's default
+      configuration values. [First implemented in 0.2.3.9-alpha.]
+
+    "config-text" -- The contents that Tor would write if you send it
+      a SAVECONF command, so the controller can write the file to
+      disk itself. [First implemented in 0.2.2.7-alpha.]
+
+    "exit-policy/default" -- The default exit policy lines that Tor will
+      *append* to the ExitPolicy config option.
+
+    "exit-policy/reject-private/default" -- The default exit policy lines
+      that Tor will *prepend* to the ExitPolicy config option when
+      ExitPolicyRejectPrivate is 1.
+
+    "exit-policy/reject-private/relay" -- The relay-specific exit policy
+      lines that Tor will *prepend* to the ExitPolicy config option based
+      on the current values of ExitPolicyRejectPrivate and
+      ExitPolicyRejectLocalInterfaces. These lines are based on the public
+      addresses configured in the torrc and present on the relay's
+      interfaces.
+
+    "exit-policy/ipv4"
+    "exit-policy/ipv6"
+    "exit-policy/full" -- This OR's exit policy, in IPv4-only, IPv6-only, or
+      all-entries flavors.
+
+    "desc/id/<OR identity>" or "desc/name/<OR nickname>" -- the latest
+      server descriptor for a given OR.  (Note that modern Tor clients
+      do not download server descriptors by default, but download
+      microdescriptors instead.  If microdescriptors are enabled, you'll
+      need to use "md" instead.)
+
+    "md/id/<OR identity>" or "md/name/<OR nickname>" -- the latest
+      microdescriptor for a given OR. Empty if we have no microdescriptor for
+      that OR (because we haven't downloaded one, or it isn't in the
+      consensus). [First implemented in 0.2.3.8-alpha.]
+
+    "desc/download-enabled" -- "1" if we try to download router descriptors;
+      "0" otherwise. [First implemented in 0.3.2.1-alpha]
+
+    "md/download-enabled" -- "1" if we try to download microdescriptors;
+      "0" otherwise. [First implemented in 0.3.2.1-alpha]
+
+    "dormant" -- A nonnegative integer: zero if Tor is currently active and
+      building circuits, and nonzero if Tor has gone idle due to lack of use
+      or some similar reason.  [First implemented in 0.2.3.16-alpha]
+
+    "desc-annotations/id/<OR identity>" -- outputs the annotations string
+      (source, timestamp of arrival, purpose, etc) for the corresponding
+      descriptor. [First implemented in 0.2.0.13-alpha.]
+
+    "extra-info/digest/<digest>"  -- the extrainfo document whose digest (in
+      hex) is <digest>.  Only available if we're downloading extra-info
+      documents.
+
+    "ns/id/<OR identity>" or "ns/name/<OR nickname>" -- the latest router
+      status info (v3 directory style) for a given OR.  Router status
+      info is as given in dir-spec.txt, and reflects the latest
+      consensus opinion about the
+      router in question. Like directory clients, controllers MUST
+      tolerate unrecognized flags and lines.  The published date and
+      descriptor digest are those believed to be best by this Tor,
+      not necessarily those for a descriptor that Tor currently has.
+      [First implemented in 0.1.2.3-alpha.]
+      [In 0.2.0.9-alpha this switched from v2 directory style to v3]
+
+    "ns/all" -- Router status info (v3 directory style) for all ORs we
+      that the consensus has an opinion about, joined by newlines.
+      [First implemented in 0.1.2.3-alpha.]
+      [In 0.2.0.9-alpha this switched from v2 directory style to v3]
+
+    "ns/purpose/<purpose>" -- Router status info (v3 directory style)
+      for all ORs of this purpose. Mostly designed for /ns/purpose/bridge
+      queries.
+      [First implemented in 0.2.0.13-alpha.]
+      [In 0.2.0.9-alpha this switched from v2 directory style to v3]
+
+    "desc/all-recent" -- the latest server descriptor for every router that
+      Tor knows about.  (See md note about "desc/id" and "desc/name" above.)
+
+    "network-status" -- a space-separated list (v1 directory style)
+      of all known OR identities. This is in the same format as the
+      router-status line in v1 directories; see dir-spec-v1.txt section
+      3 for details.  (If VERBOSE_NAMES is enabled, the output will
+      not conform to dir-spec-v1.txt; instead, the result will be a
+      space-separated list of LongName, each preceded by a "!" if it is
+      believed to be not running.) This option is deprecated; use
+      "ns/all" instead.
+
+    "address-mappings/all"
+    "address-mappings/config"
+    "address-mappings/cache"
+    "address-mappings/control" -- a \r\n-separated list of address
+      mappings, each in the form of "from-address to-address expiry".
+      The 'config' key returns those address mappings set in the
+      configuration; the 'cache' key returns the mappings in the
+      client-side DNS cache; the 'control' key returns the mappings set
+      via the control interface; the 'all' target returns the mappings
+      set through any mechanism.
+      Expiry is formatted as with ADDRMAP events, except that "expiry" is
+      always a time in UTC or the string "NEVER"; see section 4.1.7.
+      First introduced in 0.2.0.3-alpha.
+
+    "addr-mappings/*" -- as for address-mappings/*, but without the
+      expiry portion of the value.  Use of this value is deprecated
+      since 0.2.0.3-alpha; use address-mappings instead.
+
+    "address" -- the best guess at our external IP address. If we
+      have no guess, return a 551 error. (Added in 0.1.2.2-alpha)
+
+    "fingerprint" -- the contents of the fingerprint file that Tor
+      writes as a relay, or a 551 if we're not a relay currently.
+      (Added in 0.1.2.3-alpha)
+
+    "circuit-status"
+      A series of lines as for a circuit status event. Each line is of
+      the form described in section 4.1.1, omitting the initial
+      "650 CIRC ".  Note that clients must be ready to accept additional
+      arguments as described in section 4.1.
+
+    "stream-status"
+      A series of lines as for a stream status event.  Each is of the form:
+         StreamID SP StreamStatus SP CircuitID SP Target CRLF
+
+    "orconn-status"
+      A series of lines as for an OR connection status event.  In Tor
+      0.1.2.2-alpha with feature VERBOSE_NAMES enabled and in Tor
+      0.2.2.1-alpha and later by default, each line is of the form:
+         LongName SP ORStatus CRLF
+
+     In Tor versions 0.1.2.2-alpha through 0.2.2.1-alpha with feature
+     VERBOSE_NAMES turned off and before version 0.1.2.2-alpha, each line
+     is of the form:
+         ServerID SP ORStatus CRLF
+
+    "entry-guards"
+      A series of lines listing the currently chosen entry guards, if any.
+      In Tor 0.1.2.2-alpha with feature VERBOSE_NAMES enabled and in Tor
+      0.2.2.1-alpha and later by default, each line is of the form:
+         LongName SP Status [SP ISOTime] CRLF
+
+     In Tor versions 0.1.2.2-alpha through 0.2.2.1-alpha with feature
+     VERBOSE_NAMES turned off and before version 0.1.2.2-alpha, each line
+     is of the form:
+         ServerID2 SP Status [SP ISOTime] CRLF
+         ServerID2 = Nickname / 40*HEXDIG
+
+      The definition of Status is the same for both:
+         Status = "up" / "never-connected" / "down" /
+                  "unusable" / "unlisted"
+
+      [From 0.1.1.4-alpha to 0.1.1.10-alpha, entry-guards was called
+       "helper-nodes". Tor still supports calling "helper-nodes", but it
+        is deprecated and should not be used.]
+
+      [Older versions of Tor (before 0.1.2.x-final) generated 'down' instead
+       of unlisted/unusable. Between 0.1.2.x-final and 0.2.6.3-alpha,
+       'down' was never generated.]
+
+      [XXXX ServerID2 differs from ServerID in not prefixing fingerprints
+       with a $.  This is an implementation error.  It would be nice to add
+       the $ back in if we can do so without breaking compatibility.]
+
+    "traffic/read" -- Total bytes read (downloaded).
+
+    "traffic/written" -- Total bytes written (uploaded).
+
+    "accounting/enabled"
+    "accounting/hibernating"
+    "accounting/bytes"
+    "accounting/bytes-left"
+    "accounting/interval-start"
+    "accounting/interval-wake"
+    "accounting/interval-end"
+      Information about accounting status.  If accounting is enabled,
+      "enabled" is 1; otherwise it is 0.  The "hibernating" field is "hard"
+      if we are accepting no data; "soft" if we're accepting no new
+      connections, and "awake" if we're not hibernating at all.  The "bytes"
+      and "bytes-left" fields contain (read-bytes SP write-bytes), for the
+      start and the rest of the interval respectively.  The 'interval-start'
+      and 'interval-end' fields are the borders of the current interval; the
+      'interval-wake' field is the time within the current interval (if any)
+      where we plan[ned] to start being active. The times are UTC.
+
+    "config/names"
+      A series of lines listing the available configuration options. Each is
+      of the form:
+         OptionName SP OptionType [ SP Documentation ] CRLF
+         OptionName = Keyword
+         OptionType = "Integer" / "TimeInterval" / "TimeMsecInterval" /
+           "DataSize" / "Float" / "Boolean" / "Time" / "CommaList" /
+           "Dependent" / "Virtual" / "String" / "LineList"
+         Documentation = Text
+      Note: The incorrect spelling "Dependant" was used from the time this key
+      was introduced in Tor 0.1.1.4-alpha until it was corrected in Tor
+      0.3.0.2-alpha.  It is recommended that clients accept both spellings.
+
+    "config/defaults"
+      A series of lines listing default values for each configuration
+      option. Options which don't have a valid default don't show up
+      in the list.  Introduced in Tor 0.2.4.1-alpha.
+         OptionName SP OptionValue CRLF
+         OptionName = Keyword
+         OptionValue = Text
+
+    "info/names"
+      A series of lines listing the available GETINFO options.  Each is of
+      one of these forms:
+         OptionName SP Documentation CRLF
+         OptionPrefix SP Documentation CRLF
+         OptionPrefix = OptionName "/*"
+      The OptionPrefix form indicates a number of options beginning with the
+      prefix. So if "config/*" is listed, other options beginning with
+      "config/" will work, but "config/*" itself is not an option.
+
+    "events/names"
+      A space-separated list of all the events supported by this version of
+      Tor's SETEVENTS.
+
+    "features/names"
+      A space-separated list of all the features supported by this version
+      of Tor's USEFEATURE.
+
+    "signal/names"
+      A space-separated list of all the values supported by the SIGNAL
+      command.
+
+    "ip-to-country/ipv4-available"
+    "ip-to-country/ipv6-available"
+      "1" if the relevant geoip or geoip6 database is present; "0" otherwise.
+      This field was added in Tor 0.3.2.1-alpha.
+
+    "ip-to-country/*"
+      Maps IP addresses to 2-letter country codes.  For example,
+      "GETINFO ip-to-country/18.0.0.1" should give "US".
+
+    "process/pid" -- Process id belonging to the main tor process.
+    "process/uid" -- User id running the tor process, -1 if unknown (this is
+     unimplemented on Windows, returning -1).
+    "process/user" -- Username under which the tor process is running,
+     providing an empty string if none exists (this is unimplemented on
+     Windows, returning an empty string).
+    "process/descriptor-limit" -- Upper bound on the file descriptor limit, -1
+     if unknown.
+
+    "dir/status-vote/current/consensus" [added in Tor 0.2.1.6-alpha]
+    "dir/status/authority"
+    "dir/status/fp/<F>"
+    "dir/status/fp/<F1>+<F2>+<F3>"
+    "dir/status/all"
+    "dir/server/fp/<F>"
+    "dir/server/fp/<F1>+<F2>+<F3>"
+    "dir/server/d/<D>"
+    "dir/server/d/<D1>+<D2>+<D3>"
+    "dir/server/authority"
+    "dir/server/all"
+      A series of lines listing directory contents, provided according to the
+      specification for the URLs listed in Section 4.4 of dir-spec.txt.  Note
+      that Tor MUST NOT provide private information, such as descriptors for
+      routers not marked as general-purpose.  When asked for 'authority'
+      information for which this Tor is not authoritative, Tor replies with
+      an empty string.
+
+      Note that, as of Tor 0.2.3.3-alpha, Tor clients don't download server
+      descriptors anymore, but microdescriptors.  So, a "551 Servers
+      unavailable" reply to all "GETINFO dir/server/*" requests is actually
+      correct.  If you have an old program which absolutely requires server
+      descriptors to work, try setting UseMicrodescriptors 0 or
+      FetchUselessDescriptors 1 in your client's torrc.
+
+    "status/circuit-established"
+    "status/enough-dir-info"
+    "status/good-server-descriptor"
+    "status/accepted-server-descriptor"
+    "status/..."
+      These provide the current internal Tor values for various Tor
+      states. See Section 4.1.10 for explanations. (Only a few of the
+      status events are available as getinfo's currently. Let us know if
+      you want more exposed.)
+    "status/reachability-succeeded/or"
+      0 or 1, depending on whether we've found our ORPort reachable.
+    "status/reachability-succeeded/dir"
+      0 or 1, depending on whether we've found our DirPort reachable.
+      1 if there is no DirPort, and therefore no need for a reachability
+      check.
+    "status/reachability-succeeded"
+      "OR=" ("0"/"1") SP "DIR=" ("0"/"1")
+      Combines status/reachability-succeeded/*; controllers MUST ignore
+      unrecognized elements in this entry.
+    "status/bootstrap-phase"
+      Returns the most recent bootstrap phase status event
+      sent. Specifically, it returns a string starting with either
+      "NOTICE BOOTSTRAP ..." or "WARN BOOTSTRAP ...". Controllers should
+      use this getinfo when they connect or attach to Tor to learn its
+      current bootstrap state.
+    "status/version/recommended"
+      List of currently recommended versions.
+    "status/version/current"
+      Status of the current version. One of: new, old, unrecommended,
+      recommended, new in series, obsolete, unknown.
+    "status/version/num-concurring"
+    "status/version/num-versioning"
+      These options are deprecated; they no longer give useful information.
+    "status/clients-seen"
+      A summary of which countries we've seen clients from recently,
+      formatted the same as the CLIENTS_SEEN status event described in
+      Section 4.1.14. This GETINFO option is currently available only
+      for bridge relays.
+    "status/fresh-relay-descs"
+      Provides fresh server and extra-info descriptors for our relay. Note
+      this is *not* the latest descriptors we've published, but rather what we
+      would generate if we needed to make a new descriptor right now.
+
+    "net/listeners/or"
+    "net/listeners/dir"
+    "net/listeners/socks"
+    "net/listeners/trans"
+    "net/listeners/natd"
+    "net/listeners/dns"
+    "net/listeners/control"
+      A quoted, space-separated list of the locations where Tor is listening
+      for connections of the specified type. These can contain IPv4
+      network address...
+
+        "127.0.0.1:9050" "127.0.0.1:9051"
+
+      ... or local unix sockets...
+
+        "unix:/home/my_user/.tor/socket"
+
+      ... or IPv6 network addresses:
+
+        "[2001:0db8:7000:0000:0000:dead:beef:1234]:9050"
+
+      [New in Tor 0.2.2.26-beta.]
+
+    "dir-usage"
+      A newline-separated list of how many bytes we've served to answer
+      each type of directory request. The format of each line is:
+         Keyword 1*SP Integer 1*SP Integer
+      where the first integer is the number of bytes written, and the second
+      is the number of requests answered.
+
+      [This feature was added in Tor 0.2.2.1-alpha, and removed in
+       Tor 0.2.9.1-alpha. Even when it existed, it only provided
+       useful output when the Tor client was built with either the
+       INSTRUMENT_DOWNLOADS or RUNNING_DOXYGEN compile-time options.]
+
+    "bw-event-cache"
+      A space-separated summary of recent BW events in chronological order
+      from oldest to newest.  Each event is represented by a comma-separated
+      tuple of "R,W", R is the number of bytes read, and W is the number of
+      bytes written.  These entries each represent about one second's worth
+      of traffic.
+      [New in Tor 0.2.6.3-alpha]
+
+     "consensus/valid-after"
+     "consensus/fresh-until"
+     "consensus/valid-until"
+      Each of these produces an ISOTime describing part of the lifetime of
+      the current (valid, accepted) consensus that Tor has.
+      [New in Tor 0.2.6.3-alpha]
+
+    "hs/client/desc/id/<ADDR>"
+      Prints the content of the hidden service descriptor corresponding to
+      the given <ADDR> which is an onion address without the ".onion" part.
+      The client's cache is queried to find the descriptor. The format of
+      the descriptor is described in section 1.3 of the rend-spec.txt
+      document.
+
+      If <ADDR> is unrecognized or if not found in the cache, a 551 error is
+      returned.
+
+      [New in Tor 0.2.7.1-alpha]
+      [HS v3 support added 0.3.3.1-alpha]
+
+    "hs/service/desc/id/<ADDR>"
+      Prints the content of the hidden service descriptor corresponding to
+      the given <ADDR> which is an onion address without the ".onion" part.
+      The service's local descriptor cache is queried to find the descriptor.
+      The format of the descriptor is described in section 1.3 of the
+      rend-spec.txt document.
+
+      If <ADDR> is unrecognized or if not found in the cache, a 551 error is
+      returned.
+
+      [New in Tor 0.2.7.2-alpha]
+      [HS v3 support added 0.3.3.1-alpha]
+
+    "onions/current"
+    "onions/detached"
+      A newline-separated list of the Onion ("Hidden") Services created
+      via the "ADD_ONION" command. The 'current' key returns Onion Services
+      belonging to the current control connection. The 'detached' key
+      returns Onion Services detached from the parent control connection
+      (as in, belonging to no control connection).
+      The format of each line is:
+         HSAddress
+      [New in Tor 0.2.7.1-alpha.]
+      [HS v3 support added 0.3.3.1-alpha]
+
+    "network-liveness"
+      The string "up" or "down", indicating whether we currently believe the
+      network is reachable.
+
+    "downloads/"
+      The keys under downloads/ are used to query download statuses; they all
+      return either a sequence of newline-terminated hex encoded digests, or
+      a "serialized download status" as follows:
+
+       SerializedDownloadSatus =
+         -- when do we plan to next attempt to download this object?
+         "next-attempt-at" SP ISOTime CRLF
+         -- how many times have we failed since the last success?
+         "n-download-failures" SP UInt CRLF
+         -- how many times have we tried to download this?
+         "n-download-attempts" SP UInt CRLF
+         -- according to which schedule rule will we download this?
+         "schedule" SP DownloadSchedule CRLF
+         -- do we want to fetch this from an authority, or will any cache do?
+         "want-authority" SP DownloadWantAuthority CRLF
+         -- do we increase our download delay whenever we fail to fetch this,
+         -- or whenever we attempt fetching this?
+         "increment-on" SP DownloadIncrementOn CRLF
+         -- do we increase the download schedule deterministically, or at
+         -- random?
+         "backoff" SP DownloadBackoff CRLF
+         [
+           -- with an exponential backoff, where are we in the schedule?
+           "last-backoff-position" Uint CRLF
+           -- with an exponential backoff, what was our last delay?
+           "last-delay-used UInt CRLF
+         ]
+
+      where
+
+      DownloadSchedule =
+        "DL_SCHED_GENERIC" / "DL_SCHED_CONSENSUS" / "DL_SCHED_BRIDGE"
+      DownloadWantAuthority =
+        "DL_WANT_ANY_DIRSERVER" / "DL_WANT_AUTHORITY"
+      DownloadIncrementOn =
+        "DL_SCHED_INCREMENT_FAILURE" / "DL_SCHED_INCREMENT_ATTEMPT"
+      DownloadBackoff =
+        "DL_SCHED_DETERMINISTIC" / "DL_SCHED_RANDOM_EXPONENTIAL"
+
+      The optional last two lines must be present if DownloadBackoff is
+      "DL_SCHED_RANDOM_EXPONENTIAL" and must be absent if DownloadBackoff
+      is "DL_SCHED_DETERMINISTIC".
+
+      In detail, the keys supported are:
+
+      "downloads/networkstatus/ns"
+        The SerializedDownloadStatus for the NS-flavored consensus for
+        whichever bootstrap state Tor is currently in.
+
+      "downloads/networkstatus/ns/bootstrap"
+        The SerializedDownloadStatus for the NS-flavored consensus at
+        bootstrap time, regardless of whether we are currently bootstrapping.
+
+      "downloads/networkstatus/ns/running"
+
+        The SerializedDownloadStatus for the NS-flavored consensus when
+        running, regardless of whether we are currently bootstrapping.
+
+      "downloads/networkstatus/microdesc"
+        The SerializedDownloadStatus for the microdesc-flavored consensus for
+        whichever bootstrap state Tor is currently in.
+
+      "downloads/networkstatus/microdesc/bootstrap"
+        The SerializedDownloadStatus for the microdesc-flavored consensus at
+        bootstrap time, regardless of whether we are currently bootstrapping.
+
+      "downloads/networkstatus/microdesc/running"
+        The SerializedDownloadStatus for the microdesc-flavored consensus when
+        running, regardless of whether we are currently bootstrapping.
+
+      "downloads/cert/fps"
+
+        A newline-separated list of hex-encoded digests for authority
+        certificates for which we have download status available.
+
+      "downloads/cert/fp/<Fingerprint>"
+        A SerializedDownloadStatus for the default certificate for the
+        identity digest <Fingerprint> returned by the downloads/cert/fps key.
+
+      "downloads/cert/fp/<Fingerprint>/sks"
+        A newline-separated list of hex-encoded signing key digests for the
+        authority identity digest <Fingerprint> returned by the
+        downloads/cert/fps key.
+
+      "downloads/cert/fp/<Fingerprint>/<SKDigest>"
+        A SerializedDownloadStatus for the certificate for the identity
+        digest <Fingerprint> returned by the downloads/cert/fps key and signing
+        key digest <SKDigest> returned by the downloads/cert/fp/<Fingerprint>/
+        sks key.
+
+      "downloads/desc/descs"
+        A newline-separated list of hex-encoded router descriptor digests
+        [note, not identity digests - the Tor process may not have seen them
+        yet while downloading router descriptors].  If the Tor process is not
+        using a NS-flavored consensus, a 551 error is returned.
+
+      "downloads/desc/<Digest>"
+        A SerializedDownloadStatus for the router descriptor with digest
+        <Digest> as returned by the downloads/desc/descs key.  If the Tor
+        process is not using a NS-flavored consensus, a 551 error is returned.
+
+      "downloads/bridge/bridges"
+        A newline-separated list of hex-encoded bridge identity digests.  If
+        the Tor process is not using bridges, a 551 error is returned.
+
+      "downloads/bridge/<Digest>"
+        A SerializedDownloadStatus for the bridge descriptor with identity
+        digest <Digest> as returned by the downloads/bridge/bridges key.  If
+        the Tor process is not using bridges, a 551 error is returned.
+
+    "sr/current"
+    "sr/previous"
+      The current or previous shared random value, as received in the
+      consensus, base-64 encoded.  An empty value means that either
+      the consensus has no shared random value, or Tor has no consensus.
+
+    "config-can-saveconf"
+      0 or 1, depending on whether it is possile to use SAVECONF without the
+      FORCE flag. (Introduced in 0.3.1.1-alpha.)
+
+  Examples:
+     C: GETINFO version desc/name/moria1
+     S: 250+desc/name/moria=
+     S: [Descriptor for moria]
+     S: .
+     S: 250-version=Tor 0.1.1.0-alpha-cvs
+     S: 250 OK
